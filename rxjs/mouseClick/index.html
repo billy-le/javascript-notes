@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.4.0/rxjs.umd.min.js"></script>
-    <title>RxJS Observable Mouse Click Practice</title>
-</head>
-<body>
-    <div class="container">
-        <h1 class="title is-1">Practicing Mouse Clicks with Observables</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+        />
+        <title>RxJS Observable Mouse Click Practice</title>
+    </head>
+    <body>
+        <div class="container has-text-centered">
+            <h1 class="title is-1">Observables: fromEvent</h1>
 
-        <div class="content">
-            Counter: <span id="count"></span>
+            <div class="content has-text-weight-semibold is-size-3">
+                Counter: <span id="count"></span>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-2">
+                    <button id="increment" class="button is-primary is-medium">
+                        +1
+                    </button>
+                </div>
+                <div class="column is-2">
+                    <button id="decrement" class="button is-danger is-medium">
+                        -1
+                    </button>
+                </div>
+            </div>
         </div>
-
-        <button id="increment" class="button is-primary">+1</button>
-        <button id="decrement" class="button is-danger">-1</button>
-
-    </div>
-    <script src="index.js"></script>    
-</body>
+    </body>
 </html>
