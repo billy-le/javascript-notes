@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.4.0/rxjs.umd.min.js"></script>
+    <title>RxJS Observable Mouse Click Practice</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title is-1">Practicing Mouse Clicks with Observables</h1>
+
+        <div class="content">
+            Counter: <span id="count"></span>
+        </div>
+
+        <button id="increment" class="button is-primary">+1</button>
+        <button id="decrement" class="button is-danger">-1</button>
+
+    </div>
+
+    <!-- RxJS practice -->
+    <script>
+            const { fromEvent } = rxjs;
+            let counter = 0;
+            const incrementButton= document.querySelector('#increment');
+            const decrementButton = document.querySelector('#decrement')
+            const count = document.querySelector('#count')
+            count.innerHTML = `${counter}`;
+
+            const incrementObservable = fromEvent(incrementButton, 'click');
+            const decrementObservable = fromEvent(decrementButton, 'click');
+
+
+            /*
+             * incrementHandler and decrementHandler will cease to function
+             * when conditions are met. I don't know how to re-trigger a 
+             * subscription to the observable. Can't wrap it in a while loop
+             * if counter is 20 or -20
+             */
+
+            const incrementHandler = incrementObservable.subscribe(() => {
+                counter += 1;
+                console.log('Inside increment, the counter is: ', counter)
+                count.innerHTML = `${counter}`;
+
+                if (counter >= 20) {
+                    return incrementHandler.unsubscribe();
+                }
+            });
+
+            
+            const decrementHandler = decrementObservable.subscribe(() => {
+                counter -= 1;
+                console.log('Inside decrement, the counter is: ', counter)
+                count.innerHTML = `${counter}`;
+
+                if (counter <= -20) {
+                    return decrementHandler.unsubscribe();
+                }
+            })
+        </script>
+</body>
+</html>
